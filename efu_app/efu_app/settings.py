@@ -29,7 +29,8 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-x)7^czu8n-r72-8k!r=eo
 DEBUG = bool(int(os.environ.get('DEBUG', 0)))
 
 #ALLOWED_HOSTS = ['0.0.0.0', 'localhost', 'testserver', '127.0.0.1']
-ALLOWED_HOSTS = []
+#ALLOWED_HOSTS = []
+ALLOWED_HOSTS=os.environ.get('ALLOWED_HOSTS','localhost').split(',')
 
 
 # Application definition
@@ -140,7 +141,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = '/static/static/'
+MEDIA_URL = '/static/media/'
+
+MEDIA_ROOT = '/vol/web/media'
+STATIC_ROOT = '/vol/web/static'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
@@ -155,6 +160,8 @@ SPECTACULAR_SETTINGS = {
     'TITLE': 'Email Filter Utilities API',
     'DESCRIPTION': 'Read And Filter Emails API',
     'VERSION': '1.0.0',
+    'COMPONENT_SPLIT_REQUEST': True,
+    'SERVE_INCLUDE_SCHEMA': True,
     # Other settings can be added here
 }
 

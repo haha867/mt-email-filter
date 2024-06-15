@@ -17,10 +17,12 @@ services:
 
         environment:
             - DB_HOST=dbh
-            - DB_NAME=efudb
-            - DB_USER=efuuser
-            - DB_PASS=efupwd
-            - DB_PORT=5432
+            - DB_NAME=${DB_NAME}
+            - DB_USER=${DB_USER}
+            - DB_PASS=${DB_PASS}
+            - DB_PORT=${DB_PORT}
+            - SECRET_KEY=${DJANGO_SECRET_KEY}
+            - ALLOWED_HOSTS=${DJANGO_ALLOWED_HOSTS}
             - DEBUG=1
         depends_on:
             - dbh
@@ -30,9 +32,9 @@ services:
         volumes:
             - dev-db-data:/var/lib/potgresql/data
         environment:
-            - POSTGRES_DB=efudb
-            - POSTGRES_USER=efuuser
-            - POSTGRES_PASSWORD=efupwd
+             - POSTGRES_DB=${DB_NAME}
+             - POSTGRES_USER=${DB_USER}
+             - POSTGRES_PASSWORD=${DB_PASS}
         ports:
             - 5432:5432
 
