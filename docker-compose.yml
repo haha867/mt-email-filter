@@ -1,0 +1,42 @@
+services:
+    efu_app:
+        build:
+            # directory where to build app
+            context: .
+            args:
+                - DEV=true
+        ports:
+            - "8000:8000"
+        volumes:
+            - ./efu_app:/efu_app
+            - dev-db-data:/vol/web
+        command:
+            sh -c " python manage.py wait_for_db &&
+                    python manage.py migrate &&
+                    python manage.py runserver 0.0.0.0:8000"
+
+        environment:
+            - DB_HOST=dbh
+            - DB_NAME=efudb
+            - DB_USER=efuuser
+            - DB_PASS=efupwd
+            - DB_PORT=5432
+            - DEBUG=1
+        depends_on:
+            - dbh
+
+    dbh:
+        image: postgres:latest
+        volumes:
+            - dev-db-data:/var/lib/potgresql/data
+        environment:
+            - POSTGRES_DB=efudb
+            - POSTGRES_USER=efuuser
+            - POSTGRES_PASSWORD=efupwd
+        ports:
+            - 5432:5432
+
+
+volumes:
+  dev-db-data:
+  dev-static-data:

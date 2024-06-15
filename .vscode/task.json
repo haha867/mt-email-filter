@@ -1,0 +1,49 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Migrate",
+            "type": "shell",
+            "command": "python -f /Users/mt/dev/django/mt-email-filter/efu_app/manage.py migrate",
+            "problemMatcher": [],
+            "isBackground": true,
+            "presentation": {
+                "reveal": "always",
+                "panel": "dedicated"
+            }
+        },
+        {
+            "label": "Start Postgres",
+            "type": "shell",
+            "command": "docker-compose -f /Users/mt/dev/django/mt-email-filter/docker-compose-postgres.yml up -d",
+            "problemMatcher": [],
+            "isBackground": true,
+            "presentation": {
+                "reveal": "always",
+                "panel": "dedicated"
+            }
+        },
+        {
+            "label": "Stop Postgres",
+            "type": "shell",
+            "command": "docker-compose -f /Users/mt/dev/django/mt-email-filter/docker-compose-postgres.yml down",
+            "problemMatcher": [],
+            "isBackground": true,
+            "presentation": {
+                "reveal": "always",
+                "panel": "dedicated"
+            }
+        },
+        {
+            "label": "Activate Project",
+            "type": "shell",
+            "command": "python -f /Users/mt/dev/django/mt-email-filter/manage.py runserver",
+            "problemMatcher": [],
+            "isBackground": true,
+            "presentation": {
+                "reveal": "always",
+                "panel": "dedicated"
+            }
+        }
+    ]
+}

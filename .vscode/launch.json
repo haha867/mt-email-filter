@@ -1,0 +1,47 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+
+        {
+            "name": "Python Debugger: Current File",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal"
+            //"preLaunchTask": "Activate Project",
+        },
+        {
+            "name": "py39dj (Debug)",
+            //"python": "/Users/mt/opt/anaconda3/envs/py39dj/bin/python",
+            "type": "python",
+            //"type": "debugpy",
+            "request": "launch",
+            "program": "/Users/mt/dev/django/mt-email-filter/efu_app/manage.py",
+            "console": "internalConsole",
+            "args":[
+                "runserver",
+                "--noreload"
+            ],
+            "django": true
+            //,
+            //"preLaunchTask": "Migrate"
+            //"preLaunchTask": "Start Postgres",
+            //"postDebugTask": "Stop Postgres"
+        },
+        {
+            "name": "py39dj (Test)",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/efu_app/manage.py",
+            "args": [
+              "test"
+            ],
+            "django": true
+            //"justMyCode": false
+        }
+
+    ]
+}

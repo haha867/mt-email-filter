@@ -1,0 +1,15 @@
+services:
+    dbh:
+        image: postgres
+        volumes:
+            - dev-dbh-efu:/var/lib/potgresql/data
+        environment:
+            - POSTGRES_DB=efudb
+            - POSTGRES_USER=efuuser
+            - POSTGRES_PASSWORD=efupwd
+        ports:
+            - 5432:5432
+
+
+volumes:
+  dev-dbh-efu:
