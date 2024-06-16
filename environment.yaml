@@ -1,4 +1,4 @@
-name: py39dj_dk
+name: py39dj_dk_mt
 channels:
 #  - pytorch
   - conda-forge

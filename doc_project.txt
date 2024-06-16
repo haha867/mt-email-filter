@@ -1,0 +1,17 @@
+1. Create superuser
+    docker-compose run --rm efu_app sh -c 'python manage.py createsuperuser'
+
+MEMO
+    1. ERROR 1.
+        Hint: file below was not executed (does not generated migration)!
+            scripts/run.sh
+        Dockerfile is common for local and server version.
+        The scripts/run.sh
+        1. must be included in the path
+        2. must be executed
+
+    2. ERROR 2.
+        the scripts/run.sh activates main proxy module. (efu_app.wsgi)
+        >> uwsgi --socket :9000 --workers 4 --master --enable-threads --module efu_app.wsgi
+        As a result routing was not activated!
+

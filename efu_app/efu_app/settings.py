@@ -22,7 +22,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 #SECRET_KEY = 'django-insecure-x)7^czu8n-r72-8k!r=eox2t#v6iznskdijzefk*m4k892cpx&'
-SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-x)7^czu8n-r72-8k!r=eox2t#v6iznskdijzefk*m4k892cpx&')
+#SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-x)7^czu8n-r72-8k!r=eox2t#v6iznskdijzefk*m4k892cpx&')
+SECRET_KEY = os.environ.get('SECRET_KEY') #, 'django-insecure-x)7^czu8n-r72-8k!r=eox2t#v6iznskdijzefk*m4k892cpx&')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 #DEBUG = True
@@ -96,11 +97,15 @@ DATABASES = {
         #'USER': os.environ.get('DB_USER'),
         #'PASSWORD': os.environ.get('DB_PASS'),
         #'PORT': os.environ.get('DB_PORT'),
-        'HOST': os.environ.get('DB_HOST','0.0.0.0'),
-        'NAME': os.environ.get('DB_NAME','efudb'),
-        'USER': os.environ.get('DB_USER','efuuser'),
-        'PASSWORD': os.environ.get('DB_PASS','efupwd'),
-        'PORT': os.environ.get('DB_PORT','5432'),
+        #'HOST': os.environ.get('DB_HOST','0.0.0.0'),
+        #'NAME': os.environ.get('DB_NAME','efudb'),
+        #'USER': os.environ.get('DB_USER','efuuser'),
+        #'PASSWORD': os.environ.get('DB_PASS','efupwd'),
+        #'PORT': os.environ.get('DB_PORT','5432'),
+        'HOST': os.environ.get('DB_HOST'),
+        'NAME': os.environ.get('DB_NAME'),
+        'USER': os.environ.get('DB_USER'),
+        'PASSWORD': os.environ.get('DB_PASS'),
    }
 }
 

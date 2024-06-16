@@ -18,14 +18,17 @@ class Command(BaseCommand):
             try:
                 self.check(databases=['default'])
                 db_up = True
-            #except (Psycopg2OpError, OperationalError) as e:
-            except OperationalError as e:
-                self.stdout.write(f'{dt.datetime.now().strftime("%Y-%m-%d.%H:%M:%S.%f")} OperationalError {e} OperationalError Database unavailable, waiting 1 second...')
+            except (Psycopg2OpError, OperationalError) as e:
+                self.stdout.write('Database unavailable, waiting 1 second...')
                 time.sleep(1)
-                continue
-            except Psycopg2OpError as e:
-                self.stdout.write(f'{dt.datetime.now().strftime("%Y-%m-%d.%H:%M:%S.%f")} Psycopg2OpError{e} Database unavailable, waiting 1 second...')
-                time.sleep(1)
-                continue
+            #except OperationalError as e:
+            #    self.stdout.write(f'{dt.datetime.now().strftime("%Y-%m-%d.%H:%M:%S.%f")} OperationalError {e} OperationalError Database unavailable, waiting 1 second...')
+            #    time.sleep(1)
+            #    #continue
+            #except Psycopg2OpError as e:
+            #    self.stdout.write(f'{dt.datetime.now().strftime("%Y-%m-%d.%H:%M:%S.%f")} Psycopg2OpError{e} Database unavailable, waiting 1 second...')
+            #    time.sleep(1)
+            #    #continue
 
-        self.stdout.write(self.style.SUCCESS(f'{dt.datetime.now().strftime("%Y-%m-%d.%H:%M:%S.%f")} Database available!'))
+        #self.stdout.write(self.style.SUCCESS(f'{dt.datetime.now().strftime("%Y-%m-%d.%H:%M:%S.%f")} Database available!'))
+        self.stdout.write(self.style.SUCCESS('Database available!'))
